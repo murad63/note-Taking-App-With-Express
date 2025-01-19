@@ -1,0 +1,33 @@
+in this project we will learn: 
+    setting up parsers for form
+    setting ejs for ejs pages
+    setting up public static files
+
+    dynamic routing
+    How to get data from frontend at backend rout
+
+
+
+to setup the project, first we will cd to enter the project directory.
+command: npm init -y 
+The command will create basic package.json file
+after That we will install express in our project using command: npm i express
+
+1. setting up parsers file form:
+    If we open the file package.json, we will watch "main":"index.js". Thats means index.js will be our main file. so lets create it.
+    app.use(express.json()); // Convert blob data to JSON data
+    app.use(express.urlencoded({ extended: true })); // Convert URL-encoded data. This two lines are settings of parser for form.
+
+2. setting ejs for ejs pages: ejs as like html but it has some extra functionality. Suppose <h1>2+2</h1>. The result will be 4.
+    first we need to install ejs using command: npm i ejs
+    setup ejs as view engine.          app.set('view engine','ejs');
+
+3. Setting up public Static File:
+    app.use(express.static(path.join(__dirname,"public"))); 
+    its used to render image, css and others file from frontend.
+
+4. dynamic routing: dynamic routing prevent render for each one routing like localhost:3000/Profile/abcd localhost:3000/Profile/abc etc.
+    Now to make it dynamic we will use simple colon, like localhost:3000/profile:abcd or localhost:3000/profile:anything. after colon its become a variable. 
+
+
+    
