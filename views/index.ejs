@@ -23,17 +23,13 @@
                     <% files.forEach(function(file){ %>
                         <div class="task w-1/4 px-3 py-2 rounded-md bg-zinc-800">
                             <h1 class="text-white text-3xl tracking-tighter"><%= file %></h1>
-                            <a href="/file/<%= file %>" class="text-blue-500 inline-block mt-2">Read More</a>
+                            <a href="/file/<%= file %>" class="mr-5 text-blue-500 inline-block mt-2">Read More</a>
+                            <a href="/edit/<%= file %>" class="mr-5 text-zinc-600 inline-block mt-2">Edit File Name</a>
                             </div>
                     <% }) %>
                     <%} else { %>
                         <h3 class="text-zinc-600">No Task here</h3>
                     <% } %>
-                
-            
-
-
-            
         </div>
     </div>
 

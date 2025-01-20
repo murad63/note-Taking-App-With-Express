@@ -5,7 +5,7 @@ const fs = require('fs'); //to use fs module. we need require fs
 
 app.use(express.json()); // Convert blob data to JSON data
 app.use(express.urlencoded({ extended: true })); // Convert URL-encoded data. This two lines are settings of parser for form
-app.use(express.static(path.join(__dirname,"public"))); //its used to render image, css and others file from frontend. _dirname is the path of your project folder like "users\murad\desktop\project1". to use this path.join, we need a require like: const path=require('path') Now we need to create a public folder and inside the public folder we will create folder like images, javascripts, stylesheets. Backend will try to find your static files from public folder.
+app.use(express.static(path.join(__dirname,"public"))); //its used to render image, css and others file from frontend. _dirname is the path of your project folder like "users\murad\desktop\project1". to use this path.join, we need a require like: const path=require('path') Now we need to create a public folder and inside the public folder we will create folder like images, javaScripts, stylesheets. Backend will try to find your static files from public folder.
 app.set('view engine','ejs'); //view render the data from frontend. view show the rendered data using ejs
 
 app.get("/", function(req, res) {
@@ -29,6 +29,16 @@ app.get('/file/:filename',function(req, res){
     fs.readFile(`./files/${req.params.filename}`,'utf-8',function(err, filedata){
         res.render('show', {filename: req.params.filename, filedata: filedata});
     })
+})
+app.get('/edit/:filename',function(req, res){
+    res.render('edit', {filename: req.params.filename})
+})
+
+app.post('/edit',function(req, res){
+    fs.rename(`./files/${req.body.previous}`,`./files/${req.body.new}`, function(err){
+        res.redirect('/')
+    })
+    
 })
 
 app.listen(3000, () => {
